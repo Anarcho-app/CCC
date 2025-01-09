@@ -1,7 +1,7 @@
 {
   "name": "Census & Consensus Cloud",
   "short_name": "ccCloud",
-  "start_url": "index.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#888888",
