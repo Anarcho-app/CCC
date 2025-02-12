@@ -237,7 +237,7 @@ graph LR;
 ```mermaid
 graph LR;
     subgraph BrowserNode
-        A[Svelte UI] --> B{JavaScript Logic}
+        A{Svelte UI} --> B{JavaScript Logic}
         B --> C{Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
         C --> D{Nostr/libp2p Client}
         B --> E{IndexedDB<br>&lcub;Dexie.js&rcub;}
