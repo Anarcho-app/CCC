@@ -7,7 +7,7 @@ This document summarizes the detailed design of a decentralized census system, a
 The system is layered: User, Decentralized Network (Akash), Aggregation & Result, and Incentive & Reputation. Key principles are local pre-processing, decentralized operations, and privacy-preserving aggregation.
 
 ```mermaid
-graph LR
+graph TD;
     subgraph Browser Node
         A[Svelte UI] --> B{JavaScript Logic}
         B --> C{Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
@@ -25,10 +25,10 @@ graph LR
         M{Data Availability<br>Monitoring} --> H
         N{Node Failure<br>Handling} --> G & H
     end
-    subgraph Blockchain Optional
+    subgraph Blockchain (Optional)
         O{Blockchain<br>&lcub;e.g., Ethereum&rcub;} --> P{Result Recording<br>Incentive Mgmt}
     end
-    subgraph Helper Nodes Optional
+    subgraph Helper Nodes (Optional)
         Q{Helper Node} --> R{WebRTC<br>Communication}
         R --> I
     end
@@ -72,7 +72,7 @@ Key Components and Technologies (Detailed)
 *   **Testing:** Comprehensive testing strategy including Unit (Jest/Mocha), Integration (Jest/Mocha), End-to-End (Cypress/Puppeteer), Performance, Security Audits, and Fault Tolerance tests.
 
 ```mermaid
-graph LR
+graph TD;
     A{User Input (Browser)} --> B{Local Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
     B --> C{Data Transmission<br>&lcub;Nostr/libp2p to Akash&rcub;}
     C --> D{Data Storage<br>&lcub;Akash - Hypercore&rcub;}
@@ -123,7 +123,7 @@ graph LR
 *   **DP on Aggregated Results:** Additional privacy layer for aggregate statistics.
 
 ```mermaid
-graph LR
+graph LR;
     A{Node A Stores Data} --> B{Node A Creates Voucher<br>&lcub;in GunDB&rcub;}
     B --> C{Voucher Includes<br>&lcub;Data Hash, Timestamp,<br>Node A Signature&rcub;}
     C --> D{Voucher Stored in GunDB}
@@ -147,7 +147,7 @@ graph LR
 *   **Re-Replication:** Automatic re-replication upon unavailability detection.
 
 ```mermaid
-graph LR
+graph LR;
     A{Node Failure Detected<br>&lcub;Heartbeat Timeout, etc.&rcub;} --> B{Identify Data on Failed Node}
     B --> C{Check Data Replicas<br>&lcub;Hypercore & Vouchers&rcub;}
     C -- Replicas Insufficient --> D{Initiate Re-replication<br>from Healthy Nodes}
@@ -189,7 +189,7 @@ graph LR
 *   **Limitations:** Browser performance, security constraints, partial trust model.
 
 ```mermaid
-graph LR
+graph LR;
     A{Event Trigger<br>&lcub;e.g., Data Available, Vouch, Failure&rcub;} --> B{Evaluate Event Impact<br>&lcub;Reputation Algorithm&rcub;}
     B --> C{Update Reputation Score<br>&lcub;GunDB&rcub;}
     C --> D{Propagate Update<br>&lcub;GunDB Real-time Sync&rcub;}
@@ -236,7 +236,7 @@ graph LR
 **Deliverables:**
 
 ```mermaid
-graph LR
+graph TD;
     subgraph Browser Node
         A[Svelte UI] --> B{JavaScript Logic}
         B --> C{Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
@@ -379,7 +379,7 @@ graph LR
     **Data Flow Flowchart:**
 
     ```mermaid
-    graph LR
+    graph TD;
         A{User Input (Browser)} --> B{Local Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
         B --> C{Data Transmission<br>&lcub;Nostr/libp2p to Akash&rcub;}
         C --> D{Data Storage<br>&lcub;Akash - Hypercore&rcub;}
@@ -401,7 +401,7 @@ graph LR
     **Reputation System Update Flowchart:**
 
     ```mermaid
-    graph LR
+    graph LR;
         A{Event Trigger<br>&lcub;e.g., Data Available, Vouch, Failure&rcub;} --> B{Evaluate Event Impact<br>&lcub;Reputation Algorithm&rcub;}
         B --> C{Update Reputation Score<br>&lcub;GunDB&rcub;}
         C --> D{Propagate Update<br>&lcub;GunDB Real-time Sync&rcub;}
@@ -416,7 +416,7 @@ graph LR
     **Node Failure Handling Flowchart:**
 
     ```mermaid
-    graph LR
+    graph LR;
         A{Node Failure Detected<br>&lcub;Heartbeat Timeout, etc.&rcub;} --> B{Identify Data on Failed Node}
         B --> C{Check Data Replicas<br>&lcub;Hypercore & Vouchers&rcub;}
         C -- Replicas Insufficient --> D{Initiate Re-replication<br>from Healthy Nodes}
@@ -435,7 +435,7 @@ graph LR
     **Vouching Process Flowchart:**
 
     ```mermaid
-    graph LR
+    graph LR;
         A{Node A Stores Data} --> B{Node A Creates Voucher<br>&lcub;in GunDB&rcub;}
         B --> C{Voucher Includes<br>&lcub;Data Hash, Timestamp,<br>Node A Signature&rcub;}
         C --> D{Voucher Stored in GunDB}
