@@ -8,28 +8,28 @@ The system is layered: User, Decentralized Network (Akash), Aggregation & Result
 
 ```mermaid
 graph LR
-    subgraph Browser Node
-        A[Svelte UI] --> B(JavaScript Logic)
-        B --> C{Pre-processing<br>(Encrypt, DP, ZKP,<br>Compress, Serialize)}
-        C --> D(Nostr/libp2p Client)
-        B --> E[IndexedDB<br>(Dexie.js)]
+    subgraph BrowserNode
+        A{Svelte UI} --> B{JavaScript Logic}
+        B --> C{Pre-processing - Encrypt, DP, ZKP,<br>Compress, Serialize}
+        C --> D{Nostr/libp2p Client}
+        B --> E{IndexedDB - Dexie.js}
     end
-    subgraph Akash Network
-        F(Nostr/libp2p Server) --> G[Hypercore<br>Storage]
-        F --> H(GunDB<br>Metadata & Vouchers)
+    subgraph AkashNetwork
+        F{Nostr/libp2p Server} --> G{Hypercore<br>Storage}
+        F --> H{GunDB<br>Metadata & Vouchers}
         G --> I{MPC/HE<br>Computation}
         I --> H
-        J[DHT<br>(js-libp2p-kad-dht)] -- Location Queries --> G
-        K[Earthstar Server<br>(Archival)] -.-> G
-        L[Reputation System] --> H
-        M[Data Availability<br>Monitoring] --> H
-        N[Node Failure<br>Handling] --> G & H
+        J{DHT<br>js-libp2p-kad-dht} -- Location Queries --> G
+        K{Earthstar Server - Archival} -.-> G
+        L{Reputation System} --> H
+        M{Data Availability<br>Monitoring} --> H
+        N{Node Failure<br>Handling} --> G & H
     end
-    subgraph Blockchain (Optional)
-        O[Blockchain<br>(e.g., Ethereum)] --> P{Result Recording<br>Incentive Mgmt}
+    subgraph BlockchainOptional
+        O{Blockchain<br>e.g., BTC, ETH, SOL, BNB, MATIC} --> P{Result Recording<br>Incentive Mgmt}
     end
-    subgraph Helper Nodes (Optional)
-        Q[Helper Node] --> R(WebRTC<br>Communication)
+    subgraph HelperNodesOptional
+        Q{Helper Node} --> R{WebRTC<br>Communication}
         R --> I
     end
 
