@@ -10,23 +10,23 @@ The system is layered: User, Decentralized Network (Akash), Aggregation & Result
 graph LR
     subgraph Browser Node
         A[Svelte UI] --> B{JavaScript Logic}
-        B --> C{Pre-processing<br>{(Encrypt, DP, ZKP, Compress, Serialize)}}
+        B --> C{Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
         C --> D{Nostr/libp2p Client}
-        B --> E{IndexedDB<br>{(Dexie.js)}}
+        B --> E{IndexedDB<br>&lcub;Dexie.js&rcub;}
     end
     subgraph Akash Network
         F{Nostr/libp2p Server} --> G{Hypercore<br>Storage}
-        F --> H{GunDB<br>{Metadata & Vouchers}}
+        F --> H{GunDB<br>&lcub;Metadata & Vouchers&rcub;}
         G --> I{MPC/HE<br>Computation}
         I --> H
-        J{DHT<br>{(js-libp2p-kad-dht)}} -- Location Queries --> G
-        K{Earthstar Server<br>{(Archival)}} -.-> G
+        J{DHT<br>&lcub;js-libp2p-kad-dht&rcub;} -- Location Queries --> G
+        K{Earthstar Server<br>&lcub;Archival&rcub;} -.-> G
         L{Reputation System} --> H
         M{Data Availability<br>Monitoring} --> H
         N{Node Failure<br>Handling} --> G & H
     end
     subgraph Blockchain (Optional)
-        O{Blockchain<br>{(e.g., Ethereum)}} --> P{Result Recording<br>Incentive Mgmt}
+        O{Blockchain<br>&lcub;e.g., Ethereum&rcub;} --> P{Result Recording<br>Incentive Mgmt}
     end
     subgraph Helper Nodes (Optional)
         Q{Helper Node} --> R{WebRTC<br>Communication}
@@ -73,13 +73,13 @@ Key Components and Technologies (Detailed)
 
 ```mermaid
 graph LR
-    A{User Input (Browser)} --> B{Local Pre-processing<br>{(Encrypt, DP, ZKP, Compress, Serialize)}}
-    B --> C{Data Transmission<br>{(Nostr/libp2p to Akash)}}
-    C --> D{Data Storage<br>{(Akash - Hypercore)}}
-    D --> E{Metadata Mgmt<br>{(Akash - GunDB)}}
+    A{User Input (Browser)} --> B{Local Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
+    B --> C{Data Transmission<br>&lcub;Nostr/libp2p to Akash&rcub;}
+    C --> D{Data Storage<br>&lcub;Akash - Hypercore&rcub;}
+    D --> E{Metadata Mgmt<br>&lcub;Akash - GunDB&rcub;}
     D & E --> F{Privacy-Preserving<br>Aggregation (MPC/HE)}
-    F --> G{Result Recording<br>{(Blockchain - Optional)}}
-    D & E --> H{Archival<br>{(IPFS/Earthstar)}}
+    F --> G{Result Recording<br>&lcub;Blockchain - Optional&rcub;}
+    D & E --> H{Archival<br>&lcub;IPFS/Earthstar&rcub;}
     F --> G
     style A fill:#f9f,stroke:#333,stroke-width:2px
     style B fill:#ccf,stroke:#333,stroke-width:2px
@@ -124,11 +124,11 @@ graph LR
 
 ```mermaid
 graph LR
-    A{Node A Stores Data} --> B{Node A Creates Voucher<br>{(in GunDB)}}
-    B --> C{Voucher Includes<br>{Data Hash, Timestamp,<br>Node A Signature}}
+    A{Node A Stores Data} --> B{Node A Creates Voucher<br>&lcub;in GunDB&rcub;}
+    B --> C{Voucher Includes<br>&lcub;Data Hash, Timestamp,<br>Node A Signature&rcub;}
     C --> D{Voucher Stored in GunDB}
-    D --> E{Other Nodes Can Query<br>{GunDB for Vouchers}}
-    E --> F{Verify Voucher<br>{(Signature, Data Hash)}}
+    D --> E{Other Nodes Can Query<br>&lcub;GunDB for Vouchers&rcub;}
+    E --> F{Verify Voucher<br>&lcub;Signature, Data Hash&rcub;}
     F -- Valid Voucher --> G{Increased Confidence<br>in Data Availability}
     F -- Invalid Voucher --> H{Decreased Confidence<br>Potential Reputation Penalty}
     style A fill:#f9f,stroke:#333,stroke-width:2px
@@ -148,8 +148,8 @@ graph LR
 
 ```mermaid
 graph LR
-    A{Node Failure Detected<br>{(Heartbeat Timeout, etc.)}} --> B{Identify Data on Failed Node}
-    B --> C{Check Data Replicas<br>{(Hypercore & Vouchers)}}
+    A{Node Failure Detected<br>&lcub;Heartbeat Timeout, etc.&rcub;} --> B{Identify Data on Failed Node}
+    B --> C{Check Data Replicas<br>&lcub;Hypercore & Vouchers&rcub;}
     C -- Replicas Insufficient --> D{Initiate Re-replication<br>from Healthy Nodes}
     C -- Replicas Sufficient --> E[No Re-replication Needed]
     D --> F{New Replicas Created<br>Data Redundancy Restored}
@@ -190,9 +190,9 @@ graph LR
 
 ```mermaid
 graph LR
-    A{Event Trigger<br>{(e.g., Data Available, Vouch, Failure)}} --> B{Evaluate Event Impact<br>{(Reputation Algorithm)}}
-    B --> C{Update Reputation Score<br>{(GunDB)}}
-    C --> D{Propagate Update<br>{(GunDB Real-time Sync)}}
+    A{Event Trigger<br>&lcub;e.g., Data Available, Vouch, Failure&rcub;} --> B{Evaluate Event Impact<br>&lcub;Reputation Algorithm&rcub;}
+    B --> C{Update Reputation Score<br>&lcub;GunDB&rcub;}
+    C --> D{Propagate Update<br>&lcub;GunDB Real-time Sync&rcub;}
     D --> E{Reputation Score Updated<br>Network-wide}
     style A fill:#f9f,stroke:#333,stroke-width:2px
     style B fill:#ccf,stroke:#333,stroke-width:2px
@@ -239,23 +239,23 @@ graph LR
 graph LR
     subgraph Browser Node
         A[Svelte UI] --> B{JavaScript Logic}
-        B --> C{Pre-processing<br>{(Encrypt, DP, ZKP, Compress, Serialize)}}
+        B --> C{Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
         C --> D{Nostr/libp2p Client}
-        B --> E{IndexedDB<br>{(Dexie.js)}}
+        B --> E{IndexedDB<br>&lcub;Dexie.js&rcub;}
     end
     subgraph Akash Network
         F{Nostr/libp2p Server} --> G{Hypercore<br>Storage}
-        F --> H{GunDB<br>{Metadata & Vouchers}}
+        F --> H{GunDB<br>&lcub;Metadata & Vouchers&rcub;}
         G --> I{MPC/HE<br>Computation}
         I --> H
-        J{DHT<br>{(js-libp2p-kad-dht)}} -- Location Queries --> G
-        K{Earthstar Server<br>{(Archival)}} -.-> G
+        J{DHT<br>&lcub;js-libp2p-kad-dht&rcub;} -- Location Queries --> G
+        K{Earthstar Server<br>&lcub;Archival&rcub;} -.-> G
         L{Reputation System} --> H
         M{Data Availability<br>Monitoring} --> H
         N{Node Failure<br>Handling} --> G & H
     end
     subgraph Blockchain (Optional)
-        O{Blockchain<br>{(e.g., Ethereum)}} --> P{Result Recording<br>Incentive Mgmt}
+        O{Blockchain<br>&lcub;e.g., Ethereum&rcub;} --> P{Result Recording<br>Incentive Mgmt}
     end
     subgraph Helper Nodes (Optional)
         Q{Helper Node} --> R{WebRTC<br>Communication}
@@ -380,13 +380,13 @@ graph LR
 
     ```mermaid
     graph LR
-        A{User Input (Browser)} --> B{Local Pre-processing<br>{(Encrypt, DP, ZKP, Compress, Serialize)}}
-        B --> C{Data Transmission<br>{(Nostr/libp2p to Akash)}}
-        C --> D{Data Storage<br>{(Akash - Hypercore)}}
-        D --> E{Metadata Mgmt<br>{(Akash - GunDB)}}
+        A{User Input (Browser)} --> B{Local Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
+        B --> C{Data Transmission<br>&lcub;Nostr/libp2p to Akash&rcub;}
+        C --> D{Data Storage<br>&lcub;Akash - Hypercore&rcub;}
+        D --> E{Metadata Mgmt<br>&lcub;Akash - GunDB&rcub;}
         D & E --> F{Privacy-Preserving<br>Aggregation (MPC/HE)}
-        F --> G{Result Recording<br>{(Blockchain - Optional)}}
-        D & E --> H{Archival<br>{(IPFS/Earthstar)}}
+        F --> G{Result Recording<br>&lcub;Blockchain - Optional&rcub;}
+        D & E --> H{Archival<br>&lcub;IPFS/Earthstar&rcub;}
         F --> G
         style A fill:#f9f,stroke:#333,stroke-width:2px
         style B fill:#ccf,stroke:#333,stroke-width:2px
@@ -402,9 +402,9 @@ graph LR
 
     ```mermaid
     graph LR
-        A{Event Trigger<br>{(e.g., Data Available, Vouch, Failure)}} --> B{Evaluate Event Impact<br>{(Reputation Algorithm)}}
-        B --> C{Update Reputation Score<br>{(GunDB)}}
-        C --> D{Propagate Update<br>{(GunDB Real-time Sync)}}
+        A{Event Trigger<br>&lcub;e.g., Data Available, Vouch, Failure&rcub;} --> B{Evaluate Event Impact<br>&lcub;Reputation Algorithm&rcub;}
+        B --> C{Update Reputation Score<br>&lcub;GunDB&rcub;}
+        C --> D{Propagate Update<br>&lcub;GunDB Real-time Sync&rcub;}
         D --> E{Reputation Score Updated<br>Network-wide}
         style A fill:#f9f,stroke:#333,stroke-width:2px
         style B fill:#ccf,stroke:#333,stroke-width:2px
@@ -417,8 +417,8 @@ graph LR
 
     ```mermaid
     graph LR
-        A{Node Failure Detected<br>{(Heartbeat Timeout, etc.)}} --> B{Identify Data on Failed Node}
-        B --> C{Check Data Replicas<br>{(Hypercore & Vouchers)}}
+        A{Node Failure Detected<br>&lcub;Heartbeat Timeout, etc.&rcub;} --> B{Identify Data on Failed Node}
+        B --> C{Check Data Replicas<br>&lcub;Hypercore & Vouchers&rcub;}
         C -- Replicas Insufficient --> D{Initiate Re-replication<br>from Healthy Nodes}
         C -- Replicas Sufficient --> E[No Re-replication Needed]
         D --> F{New Replicas Created<br>Data Redundancy Restored}
@@ -436,11 +436,11 @@ graph LR
 
     ```mermaid
     graph LR
-        A{Node A Stores Data} --> B{Node A Creates Voucher<br>{(in GunDB)}}
-        B --> C{Voucher Includes<br>{Data Hash, Timestamp,<br>Node A Signature}}
+        A{Node A Stores Data} --> B{Node A Creates Voucher<br>&lcub;in GunDB&rcub;}
+        B --> C{Voucher Includes<br>&lcub;Data Hash, Timestamp,<br>Node A Signature&rcub;}
         C --> D{Voucher Stored in GunDB}
-        D --> E{Other Nodes Can Query<br>{GunDB for Vouchers}}
-        E --> F{Verify Voucher<br>{(Signature, Data Hash)}}
+        D --> E{Other Nodes Can Query<br>&lcub;GunDB for Vouchers&rcub;}
+        E --> F{Verify Voucher<br>&lcub;Signature, Data Hash&rcub;}
         F -- Valid Voucher --> G{Increased Confidence<br>in Data Availability}
         F -- Invalid Voucher --> H{Decreased Confidence<br>Potential Reputation Penalty}
         style A fill:#f9f,stroke:#333,stroke-width:2px
