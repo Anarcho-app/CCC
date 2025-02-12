@@ -71,7 +71,7 @@ Key Components and Technologies (Detailed)
 *   **Testing:** Comprehensive testing strategy including Unit (Jest/Mocha), Integration (Jest/Mocha), End-to-End (Cypress/Puppeteer), Performance, Security Audits, and Fault Tolerance tests.
 
 ```mermaid
-graph TD;
+graph LR;
     A{User Input - Browser} --> B{Local Pre-processing. Encrypt, DP, ZKP, Compress, Serialize}
     B --> C{Data Transmission Nostr/libp2p to Akash}
     C --> D{Data Storage Akash - Hypercore}
