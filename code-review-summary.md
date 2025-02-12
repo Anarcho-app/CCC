@@ -73,13 +73,13 @@ Key Components and Technologies (Detailed)
 
 ```mermaid
 graph TD;
-    A{User Input (Browser)} --> B{Local Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
-    B --> C{Data Transmission<br>&lcub;Nostr/libp2p to Akash&rcub;}
-    C --> D{Data Storage<br>&lcub;Akash - Hypercore&rcub;}
-    D --> E{Metadata Mgmt<br>&lcub;Akash - GunDB&rcub;}
-    D & E --> F{Privacy-Preserving<br>Aggregation (MPC/HE)}
-    F --> G{Result Recording<br>&lcub;Blockchain - Optional&rcub;}
-    D & E --> H{Archival<br>&lcub;IPFS/Earthstar&rcub;}
+    A{User Input (Browser)} --> B{Local Pre-processing. Encrypt, DP, ZKP, Compress, Serialize}
+    B --> C{Data Transmission Nostr/libp2p to Akash}
+    C --> D{Data Storage Akash - Hypercore}
+    D --> E{Metadata Mgmt Akash - GunDB}
+    D & E --> F{Privacy-Preserving Aggregation (MPC/HE)}
+    F --> G{Result Recording Blockchain - Optional}
+    D & E --> H{Archival IPFS/Earthstar}
     F --> G
     style A fill:#f9f,stroke:#333,stroke-width:2px
     style B fill:#ccf,stroke:#333,stroke-width:2px
