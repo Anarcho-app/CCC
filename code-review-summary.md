@@ -73,7 +73,7 @@ Key Components and Technologies (Detailed)
 
 ```mermaid
 graph TD;
-    A{User Input (Browser)} --> B{Local Pre-processing. Encrypt, DP, ZKP, Compress, Serialize}
+    A{User Input - Browser} --> B{Local Pre-processing. Encrypt, DP, ZKP, Compress, Serialize}
     B --> C{Data Transmission Nostr/libp2p to Akash}
     C --> D{Data Storage Akash - Hypercore}
     D --> E{Metadata Mgmt Akash - GunDB}
