@@ -7,29 +7,29 @@ This document summarizes the detailed design of a decentralized census system, a
 The system is layered: User, Decentralized Network (Akash), Aggregation & Result, and Incentive & Reputation. Key principles are local pre-processing, decentralized operations, and privacy-preserving aggregation.
 
 ```mermaid
-graph TD;
-    subgraph BrowserNode
-        A[Svelte UI] --> B{JavaScript Logic}
-        B --> C{Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
-        C --> D{Nostr/libp2p Client}
-        B --> E{IndexedDB<br>&lcub;Dexie.js&rcub;}
+graph LR
+    subgraph Browser Node
+        A[Svelte UI] --> B(JavaScript Logic)
+        B --> C{Pre-processing<br>(Encrypt, DP, ZKP,<br>Compress, Serialize)}
+        C --> D(Nostr/libp2p Client)
+        B --> E[IndexedDB<br>(Dexie.js)]
     end
-    subgraph AkashNetwork
-        F{Nostr/libp2p Server} --> G{Hypercore<br>Storage}
-        F --> H{GunDB<br>&lcub;Metadata & Vouchers&rcub;}
+    subgraph Akash Network
+        F(Nostr/libp2p Server) --> G[Hypercore<br>Storage]
+        F --> H(GunDB<br>Metadata & Vouchers)
         G --> I{MPC/HE<br>Computation}
         I --> H
-        J{DHT<br>&lcub;js-libp2p-kad-dht&rcub;} -- Location Queries --> G
-        K{Earthstar Server<br>&lcub;Archival&rcub;} -.-> G
-        L{Reputation System} --> H
-        M{Data Availability<br>Monitoring} --> H
-        N{Node Failure<br>Handling} --> G & H
+        J[DHT<br>(js-libp2p-kad-dht)] -- Location Queries --> G
+        K[Earthstar Server<br>(Archival)] -.-> G
+        L[Reputation System] --> H
+        M[Data Availability<br>Monitoring] --> H
+        N[Node Failure<br>Handling] --> G & H
     end
-    subgraph BlockchainOptional
-        O{Blockchain<br>&lcub;e.g., Ethereum&rcub;} --> P{Result Recording<br>Incentive Mgmt}
+    subgraph Blockchain (Optional)
+        O[Blockchain<br>(e.g., Ethereum)] --> P{Result Recording<br>Incentive Mgmt}
     end
-    subgraph HelperNodesOptional
-        Q{Helper Node} --> R{WebRTC<br>Communication}
+    subgraph Helper Nodes (Optional)
+        Q[Helper Node] --> R(WebRTC<br>Communication)
         R --> I
     end
 
