@@ -77,7 +77,7 @@ graph TD;
     B --> C{Data Transmission Nostr/libp2p to Akash}
     C --> D{Data Storage Akash - Hypercore}
     D --> E{Metadata Mgmt Akash - GunDB}
-    D & E --> F{Privacy-Preserving Aggregation (MPC/HE)}
+    D & E --> F{Privacy-Preserving Aggregation - MPC/HE}
     F --> G{Result Recording Blockchain - Optional}
     D & E --> H{Archival IPFS/Earthstar}
     F --> G
