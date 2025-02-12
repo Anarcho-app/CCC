@@ -381,7 +381,7 @@ graph LR;
         B --> C{Data Transmission<br>&lcub;Nostr/libp2p to Akash&rcub;}
         C --> D{Data Storage<br>&lcub;Akash - Hypercore&rcub;}
         D --> E{Metadata Mgmt<br>&lcub;Akash - GunDB&rcub;}
-        D & E --> F{Privacy-Preserving<br>Aggregation (MPC/HE)}
+        D & E --> F{Privacy-Preserving<br>Aggregation - MPC/HE}
         F --> G{Result Recording<br>&lcub;Blockchain - Optional&rcub;}
         D & E --> H{Archival<br>&lcub;IPFS/Earthstar&rcub;}
         F --> G
