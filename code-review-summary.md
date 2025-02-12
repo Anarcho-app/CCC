@@ -25,10 +25,10 @@ graph LR
         M{Data Availability<br>Monitoring} --> H
         N{Node Failure<br>Handling} --> G & H
     end
-    subgraph Blockchain (Optional)
+    subgraph Blockchain Optional
         O{Blockchain<br>&lcub;e.g., Ethereum&rcub;} --> P{Result Recording<br>Incentive Mgmt}
     end
-    subgraph Helper Nodes (Optional)
+    subgraph Helper Nodes Optional
         Q{Helper Node} --> R{WebRTC<br>Communication}
         R --> I
     end
