@@ -8,13 +8,13 @@ The system is layered: User, Decentralized Network (Akash), Aggregation & Result
 
 ```mermaid
 graph TD;
-    subgraph Browser Node
+    subgraph BrowserNode
         A[Svelte UI] --> B{JavaScript Logic}
         B --> C{Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
         C --> D{Nostr/libp2p Client}
         B --> E{IndexedDB<br>&lcub;Dexie.js&rcub;}
     end
-    subgraph Akash Network
+    subgraph AkashNetwork
         F{Nostr/libp2p Server} --> G{Hypercore<br>Storage}
         F --> H{GunDB<br>&lcub;Metadata & Vouchers&rcub;}
         G --> I{MPC/HE<br>Computation}
@@ -25,10 +25,10 @@ graph TD;
         M{Data Availability<br>Monitoring} --> H
         N{Node Failure<br>Handling} --> G & H
     end
-    subgraph Blockchain (Optional)
+    subgraph BlockchainOptional
         O{Blockchain<br>&lcub;e.g., Ethereum&rcub;} --> P{Result Recording<br>Incentive Mgmt}
     end
-    subgraph Helper Nodes (Optional)
+    subgraph HelperNodesOptional
         Q{Helper Node} --> R{WebRTC<br>Communication}
         R --> I
     end
@@ -237,13 +237,13 @@ graph LR;
 
 ```mermaid
 graph TD;
-    subgraph Browser Node
+    subgraph BrowserNode
         A[Svelte UI] --> B{JavaScript Logic}
         B --> C{Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
         C --> D{Nostr/libp2p Client}
         B --> E{IndexedDB<br>&lcub;Dexie.js&rcub;}
     end
-    subgraph Akash Network
+    subgraph AkashNetwork
         F{Nostr/libp2p Server} --> G{Hypercore<br>Storage}
         F --> H{GunDB<br>&lcub;Metadata & Vouchers&rcub;}
         G --> I{MPC/HE<br>Computation}
@@ -254,10 +254,10 @@ graph TD;
         M{Data Availability<br>Monitoring} --> H
         N{Node Failure<br>Handling} --> G & H
     end
-    subgraph Blockchain (Optional)
+    subgraph BlockchainOptional
         O{Blockchain<br>&lcub;e.g., Ethereum&rcub;} --> P{Result Recording<br>Incentive Mgmt}
     end
-    subgraph Helper Nodes (Optional)
+    subgraph HelperNodesOptional
         Q{Helper Node} --> R{WebRTC<br>Communication}
         R --> I
     end
