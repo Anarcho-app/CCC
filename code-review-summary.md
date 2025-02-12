@@ -377,7 +377,7 @@ graph LR;
 
     ```mermaid
     graph TD;
-        A{User Input (Browser)} --> B{Local Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
+        A{User Input -Browser } --> B{Local Pre-processing<br>&lcub;Encrypt, DP, ZKP, Compress, Serialize&rcub;}
         B --> C{Data Transmission<br>&lcub;Nostr/libp2p to Akash&rcub;}
         C --> D{Data Storage<br>&lcub;Akash - Hypercore&rcub;}
         D --> E{Metadata Mgmt<br>&lcub;Akash - GunDB&rcub;}
