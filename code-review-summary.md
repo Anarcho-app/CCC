@@ -10,7 +10,7 @@ The system is layered: User, Decentralized Network (Akash), Aggregation & Result
 graph LR
     subgraph Browser Node
         A[Svelte UI] --> B(JavaScript Logic)
-        B --> C{Pre-processing\n(Encrypt, DP, ZKP,\nCompress, Serialize)}
+        B --> C{Pre-processing <br> (Encrypt, DP, ZKP, Compress, Serialize)}
         C --> D(Nostr/libp2p Client)
         B --> E[IndexedDB\n(Dexie.js)]
     end
@@ -235,41 +235,43 @@ graph LR
 
 **Deliverables:**
 
-```mermaid
-graph LR
-    subgraph Browser Node
-        A[Svelte UI] --> B(JavaScript Logic)
-        B --> C{Pre-processing\n(Encrypt, DP, ZKP, Compress, Serialize)}
-        C --> D(Nostr/libp2p Client)
-        B --> E[IndexedDB\n(Dexie.js)]
-    end
-    subgraph Akash Network
-        F(Nostr/libp2p Server) --> G[Hypercore\nStorage]
-        F --> H(GunDB\nMetadata & Vouchers)
-        G --> I{MPC/HE\nComputation}
-        I --> H
-        J[DHT\n(js-libp2p-kad-dht)] -- Location Queries --> G
-        K[Earthstar Server\n(Archival)] -.-> G
-        L[Reputation System] --> H
-        M[Data Availability\nMonitoring] --> H
-        N[Node Failure\nHandling] --> G & H
-    end
-    subgraph Blockchain (Optional)
-        O[Blockchain\n(e.g., Ethereum)] --> P{Result Recording\nIncentive Mgmt}
-    end
-    subgraph Helper Nodes (Optional)
-        Q[Helper Node] --> R(WebRTC\nCommunication)
-        R --> I
-    end
+1.  **System Architecture Diagrams (Mermaid):**
 
-    D -- Data Transmission --> F
-    C -.-> E
-    I --> O -.-> P
-    L --> O -.-> P
+    ```mermaid
+    graph LR
+        subgraph Browser Node
+            A[Svelte UI] --> B(JavaScript Logic)
+            B --> C{Pre-processing <br> (Encrypt, DP, ZKP, Compress, Serialize)}
+            C --> D(Nostr/libp2p Client)
+            B --> E[IndexedDB\n(Dexie.js)]
+        end
+        subgraph Akash Network
+            F(Nostr/libp2p Server) --> G[Hypercore\nStorage]
+            F --> H(GunDB\nMetadata & Vouchers)
+            G --> I{MPC/HE\nComputation}
+            I --> H
+            J[DHT\n(js-libp2p-kad-dht)] -- Location Queries --> G
+            K[Earthstar Server\n(Archival)] -.-> G
+            L[Reputation System] --> H
+            M[Data Availability\nMonitoring] --> H
+            N[Node Failure\nHandling] --> G & H
+        end
+        subgraph Blockchain (Optional)
+            O[Blockchain\n(e.g., Ethereum)] --> P{Result Recording\nIncentive Mgmt}
+        end
+        subgraph Helper Nodes (Optional)
+            Q[Helper Node] --> R(WebRTC\nCommunication)
+            R --> I
+        end
 
-    linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27 stroke:#333,stroke-width:1px
-    linkStyle 14,15,20,21,22,23,24,25,26,27 stroke-dasharray: 5 5
-```
+        D -- Data Transmission --> F
+        C -.-> E
+        I --> O -.-> P
+        L --> O -.-> P
+
+        linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27 stroke:#333,stroke-width:1px
+        linkStyle 14,15,20,21,22,23,24,25,26,27 stroke-dasharray: 5 5
+    ```
 
 2.  **Comprehensive Description of System Functionality:**
 
