@@ -10,26 +10,26 @@ The system is layered: User, Decentralized Network (Akash), Aggregation & Result
 graph LR
     subgraph Browser Node
         A[Svelte UI] --> B(JavaScript Logic)
-        B --> C{Pre-processing<br>(Encrypt, DP, ZKP, Compress, Serialize)}
+        B --> C{Pre-processing\n(Encrypt, DP, ZKP,\nCompress, Serialize)}
         C --> D(Nostr/libp2p Client)
-        B --> E[IndexedDB<br>(Dexie.js)]
+        B --> E[IndexedDB\n(Dexie.js)]
     end
     subgraph Akash Network
-        F(Nostr/libp2p Server) --> G[Hypercore<br>Storage]
-        F --> H(GunDB<br>Metadata & Vouchers)
-        G --> I{MPC/HE<br>Computation}
+        F(Nostr/libp2p Server) --> G[Hypercore\nStorage]
+        F --> H(GunDB\nMetadata & Vouchers)
+        G --> I{MPC/HE\nComputation}
         I --> H
-        J[DHT<br>(js-libp2p-kad-dht)] -- Location Queries --> G
-        K[Earthstar Server<br>(Archival)] -.-> G
+        J[DHT\n(js-libp2p-kad-dht)] -- Location Queries --> G
+        K[Earthstar Server\n(Archival)] -.-> G
         L[Reputation System] --> H
-        M[Data Availability<br>Monitoring] --> H
-        N[Node Failure<br>Handling] --> G & H
+        M[Data Availability\nMonitoring] --> H
+        N[Node Failure\nHandling] --> G & H
     end
     subgraph Blockchain (Optional)
-        O[Blockchain<br>(e.g., Ethereum)] --> P{Result Recording<br>Incentive Mgmt}
+        O[Blockchain\n(e.g., Ethereum)] --> P{Result Recording\nIncentive Mgmt}
     end
     subgraph Helper Nodes (Optional)
-        Q[Helper Node] --> R(WebRTC<br>Communication)
+        Q[Helper Node] --> R(WebRTC\nCommunication)
         R --> I
     end
 
